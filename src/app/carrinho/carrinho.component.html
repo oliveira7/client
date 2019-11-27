@@ -1,0 +1,43 @@
+<div class="container" style="margin: 2%;">
+    <div class="col-md-12" >
+        <p style="text-align:center;">Você tem {{compras.length}} livros</p>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th width="40%" scope="col">Título</th>
+                <th scope="col">Qty</th>
+                <th scope="col">Price</th>
+                <th scope="col">Total</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let compra of compras; let i= index">
+                <td><a (click)="onSelect(compra.id)">{{compra.title}}</a></td>
+                <td>{{compra.qty}}</td>
+                <td>R$ {{((compra.price).toFixed(2)).replace('.',',')}}</td>
+                <td>R$ {{((compra.total).toFixed(2)).replace('.',',')}}</td>
+                <td>
+                    <div class="row">
+                        <button class="btn btn-sm btn-outline-success" (click)=onAddCarrinho(compra)>Adiciona</button>
+                        <button class="btn btn-sm btn-outline-danger" (click)=onRemoveCarrinho(compra)>Remove</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="container">
+        <div class="col-md-12 text-right">
+            <div>Sub-Total: R$ {{ ((((totalCompras) - ((frete >= 1) ? ((frete - 1) * 0.99 + 3.49) : 0.0)).toFixed(2)).replace('.',',')).replace('-', '') }}</div>
+            <div>Frete: R$  {{ (frete >= 1) ? (((frete - 1) * 0.99 + 3.49).toFixed(2)).replace('.',',') : 0.0 }} </div>
+            <div><b>TOTAL: R$ {{ (((totalCompras).toFixed(2)).replace('.',',')).replace('-','') }}</b></div>
+            <div class="row">
+                <div class="col-sm-6 text-right"><button class="btn btn-sm btn-outline-warning" routerLink="/home" routerLinkActive="active"><i class="fas fa-caret-square-left"></i> Continuar comprando</button></div>
+                <div class="col-sm-6 text-left"><button class="btn btn-sm btn-outline-success"><i class="fas fa-shopping-basket"></i> Confirmar compra(IMPREMENTAR)</button></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

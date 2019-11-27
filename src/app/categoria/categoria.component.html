@@ -1,0 +1,9 @@
+<div class="card">
+    <div class="card-header " >
+        <i class="fas fa-book"></i> Categorias
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item text-center" *ngFor="let categoria of categorias" style="font-size: 12px;" (click)=onSelectEspecifico(categoria)>{{ categoria.CategoryName }}</li>
+    </ul>
+</div>
+

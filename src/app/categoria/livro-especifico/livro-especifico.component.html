@@ -1,0 +1,24 @@
+<div *ngIf="livro$ | async as livros">
+    <div class="col-md-12" >
+        <p style="text-align:center;">Temos {{livros.length}} livros dessa categoria</p>
+    </div>
+    <div class="row " style="margin:2%;">
+        <div class="col-md-6 " *ngFor="let livro of livros">
+            <div class="card mb-4 box-shadow" >
+                <div class="card-body">
+                    <div class="row">
+                    <div class="col-sm-6">
+                        <img class="card-img-top" alt="img Thumbnail"
+                        src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{livro.ISBN}}.01.THUMBZZZ.jpg"
+                        data-holder-rendered="true" style="height: 180px; width: 150px; display: block;">
+                    </div>
+                    <div class="col-sm-6">
+                        <p style="text-align: center;"><b>{{livro.title}}</b></p>       
+                    </div>
+                    </div>
+                    <p class="card-text box">{{livro.description}}</p><a (click)="onSelect(livro)"><b style="color:blue;">mais...</b></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

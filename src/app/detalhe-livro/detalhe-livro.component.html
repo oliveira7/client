@@ -1,0 +1,33 @@
+<div class="row" style="margin:2%;">
+    <div class="col-md-12" *ngIf="livro as livro">
+        <p style="text-align: center;"><b>{{livro.title}}</b></p>
+        <div class="row text-center">
+            <div class="col-md-4">
+                <img class="card-img-top" alt="img Thumbnail"
+                src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{livro.ISBN}}.01.MZZZZZZZ.jpg"
+                data-holder-rendered="true" style="height: 250px; width: 200px; display: block;">
+            </div>
+            <div class="col-md-8">
+                <div style="text-align: justify;">
+                    <div class="row">Preço: <div class="values-red"> R$ <s>{{((livro.price).toFixed(2)).replace('.',',')}}</s></div></div>
+                    <div class="row">Desconto com desconto: <div class="values-red">R$ {{((livro.price - (livro.price * 0.2)).toFixed(2)).replace('.',',')}}</div></div>
+                    <div class="row">Desconto: <div class="values-red"> R$ {{((livro.price * 0.2).toFixed(2)).replace('.',',')}} (20%)</div></div>
+                    <div class="row">ISBN:{{livro.ISBN}}</div>
+                    <br>
+                    <div class="row font-size-info"><b>Publicado por:</b> {{livro.publisher}}</div>
+                    <div class="row font-size-info"><b>Páginas:</b> {{livro.pages}}</div>
+                    <div class="row font-size-info"><b>Editora:</b> {{livro.edition}}</div>
+                </div>
+                <br>
+                <div class="d-flex justify-content-between align-items-center row">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary" routerLink="/carrinho" routerLinkActive="active" (click)=onAddCarrinho(livro)>Adicionar ao carrinho</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div>{{livro.description}}</div>
+        <br>
+    </div>
+</div>
